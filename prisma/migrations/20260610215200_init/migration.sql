@@ -1,6 +1,0 @@
--- CreateTable
-CREATE TABLE "Menu" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "fecha" DATETIME NOT NULL,
-    "plato" TEXT NOT NULL
-);
