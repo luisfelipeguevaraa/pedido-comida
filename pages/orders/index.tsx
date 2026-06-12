@@ -46,7 +46,7 @@ export default function OrdersPage() {
       'ID Pedido': order.id,
       'ID Local': order.local?.id,
       'Local': order.local?.nombre,
-      'Fecha Pedido': new Date(order.fecha).toLocaleDateString(),
+      'Fecha Pedido': order.fecha.slice(0, 10),
       'Hora Pedido': order.horaPedido,
       'Cliente': order.nombreCliente,
       'Celular': order.celular,
@@ -60,7 +60,7 @@ export default function OrdersPage() {
       order.detalles.forEach((detail) => {
         detailData.push({
           'ID Pedido': order.id,
-          'Fecha': new Date(order.fecha).toLocaleDateString(),
+          'Fecha': order.fecha.slice(0, 10),
           'Plato': detail.menu?.plato ?? '',
           'Cantidad': detail.cantidad,
           'Precio': detail.precio.toFixed(2),
@@ -123,7 +123,7 @@ export default function OrdersPage() {
                 >
                   <td style={{ padding: 12 }}>{order.id}</td>
                   <td style={{ padding: 12 }}>{order.local?.nombre}</td>
-                  <td style={{ padding: 12 }}>{new Date(order.fecha).toLocaleDateString()}</td>
+                  <td style={{ padding: 12 }}>{order.fecha.slice(0, 10)}</td>
                   <td style={{ padding: 12 }}>{order.horaPedido}</td>
                   <td style={{ padding: 12 }}>{order.nombreCliente}</td>
                   <td style={{ padding: 12 }}>{order.celular}</td>
@@ -146,7 +146,7 @@ export default function OrdersPage() {
             </div>
             <div>
               <strong style={{ display: 'block', fontSize: 12, color: '#666', marginBottom: 4 }}>Fecha pedido</strong>
-              <div style={{ fontSize: 16, fontWeight: 500 }}>{new Date(selectedOrder.fecha).toLocaleDateString()}</div>
+              <div style={{ fontSize: 16, fontWeight: 500 }}>{selectedOrder.fecha.slice(0, 10)}</div>
             </div>
             <div>
               <strong style={{ display: 'block', fontSize: 12, color: '#666', marginBottom: 4 }}>Hora pedido</strong>
@@ -184,7 +184,7 @@ export default function OrdersPage() {
               <tbody>
                 {selectedOrder.detalles.map((detail) => (
                   <tr key={detail.id} style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ border: '1px solid #ddd', padding: 10 }}>{new Date(selectedOrder.fecha).toLocaleDateString()}</td>
+                    <td style={{ border: '1px solid #ddd', padding: 10 }}>{selectedOrder.fecha.slice(0, 10)}</td>
                     <td style={{ border: '1px solid #ddd', padding: 10 }}>{detail.menu?.plato ?? ''}</td>
                     <td style={{ border: '1px solid #ddd', padding: 10, textAlign: 'center' }}>{detail.cantidad}</td>
                     <td style={{ border: '1px solid #ddd', padding: 10, textAlign: 'right' }}>${detail.precio.toFixed(2)}</td>
