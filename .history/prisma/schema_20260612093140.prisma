@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Menu {
+  id    Int      @id @default(autoincrement())
+  fecha DateTime @db.Date
+  plato String
+}
+
+model OrderHeader {
+  id            Int           @id @default(autoincrement())
+  id_local      Int
+  local         Local         @relation(fields: [id_local], references: [id], onDelete: Cascade)
+  fecha         DateTime      @db.Date
+  horaPedido    String
+  nombreCliente String
+  celular       String
+  total         Float
+  estado        String
+  createdAt     DateTime      @default(now())
+  detalles      OrderDetail[]
+}
+
+model OrderDetail {
+  id          Int         @id @default(autoincrement())
+  orderId     Int
+  order       OrderHeader @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  menuId      Int
+  menu        Menu        @relation(fields: [menuId], references: [id])
+  cantidad    Int
+  precio      Float
+  comentarios String?
+}
+
+model Local {
+  id        Int           @id @default(autoincrement())
+  nombre    String
+  habilitado Boolean       @default(true)
+  pedidos   OrderHeader[]
+}
