@@ -61,7 +61,7 @@ export default function OrdersPage() {
         detailData.push({
           'ID Pedido': order.id,
           'Fecha': new Date(order.fecha).toLocaleDateString(),
-          'Plato': detail.menu?.plato ?? detail.menuId,
+          'Plato': detail.menu?.plato ?? '',
           'Cantidad': detail.cantidad,
           'Precio': detail.precio.toFixed(2),
           'Comentarios': detail.comentarios || '',
