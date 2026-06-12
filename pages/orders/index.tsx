@@ -44,7 +44,7 @@ export default function OrdersPage() {
     // Preparar datos de cabecera
     const headerData = orders.map((order) => ({
       'ID Pedido': order.id,
-      'ID Local': order.id_local,
+      'ID Local': order.local?.id,
       'Local': order.local?.nombre,
       'Fecha Pedido': new Date(order.fecha).toLocaleDateString(),
       'Hora Pedido': order.horaPedido,
