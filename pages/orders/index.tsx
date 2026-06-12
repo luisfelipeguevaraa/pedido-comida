@@ -60,7 +60,7 @@ export default function OrdersPage() {
       order.detalles.forEach((detail) => {
         detailData.push({
           'ID Pedido': order.id,
-          'Fecha': order.fecha.slice(0, 10),
+          'Fecha': detail.menu?.fecha.slice(0, 10) ?? '',
           'Plato': detail.menu?.plato ?? '',
           'Cantidad': detail.cantidad,
           'Precio': detail.precio.toFixed(2),
@@ -184,7 +184,7 @@ export default function OrdersPage() {
               <tbody>
                 {selectedOrder.detalles.map((detail) => (
                   <tr key={detail.id} style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ border: '1px solid #ddd', padding: 10 }}>{selectedOrder.fecha.slice(0, 10)}</td>
+                    <td style={{ border: '1px solid #ddd', padding: 10 }}>{detail.menu?.fecha.slice(0, 10) ?? ''}</td>
                     <td style={{ border: '1px solid #ddd', padding: 10 }}>{detail.menu?.plato ?? ''}</td>
                     <td style={{ border: '1px solid #ddd', padding: 10, textAlign: 'center' }}>{detail.cantidad}</td>
                     <td style={{ border: '1px solid #ddd', padding: 10, textAlign: 'right' }}>${detail.precio.toFixed(2)}</td>
