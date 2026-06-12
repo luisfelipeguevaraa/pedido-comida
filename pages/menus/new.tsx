@@ -21,7 +21,7 @@ export default function NewMenu() {
         <div style={{ marginBottom: 16 }}>
           <label style={{ display: 'block', marginBottom: 6, fontWeight: 500 }}>Fecha</label>
           <input
-            type="datetime-local"
+            type="date"
             value={fecha}
             onChange={(e) => setFecha(e.target.value)}
             style={{ width: '100%', padding: 10, border: '1px solid #ddd', borderRadius: 4, boxSizing: 'border-box' }}

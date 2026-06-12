@@ -10,7 +10,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'POST') {
     const { fecha, plato } = req.body
     if (!fecha || !plato) return res.status(400).json({ error: 'fecha y plato son requeridos' })
-    const menu = await prisma.menu.create({ data: { fecha: new Date(fecha), plato } })
+    const dateString = fecha.length === 10 ? `${fecha}T00:00:00Z` : fecha
+    const menu = await prisma.menu.create({ data: { fecha: new Date(dateString), plato } })
     return res.status(201).json(menu)
   }
 

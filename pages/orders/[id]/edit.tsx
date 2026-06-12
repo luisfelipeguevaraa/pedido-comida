@@ -214,7 +214,7 @@ export default function EditOrder() {
                       <option value="">Selecciona menú</option>
                       {menus.map((menu) => (
                         <option key={menu.id} value={menu.id}>
-                          {menu.plato} ({new Date(menu.fecha).toLocaleDateString()})
+                          {menu.plato} ({menu.fecha.slice(0, 10)})
                         </option>
                       ))}
                     </select>

@@ -6,9 +6,9 @@ type Menu = { id: number; fecha: string; plato: string }
 function ClientDate({ iso }: { iso: string }) {
   const [text, setText] = useState<string>('')
   useEffect(() => {
-    // format only on client to avoid SSR/CSR mismatch
     try {
-      setText(new Date(iso).toLocaleString())
+      const safeDate = iso.slice(0, 10)
+      setText(safeDate)
     } catch (e) {
       setText(iso)
     }
